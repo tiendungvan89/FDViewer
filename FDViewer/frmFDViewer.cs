@@ -148,7 +148,8 @@ namespace FDViewer
 				//        //Clipboard.SetText(p_sb.ToString());
 				//    }
 				//}
-			} // End Of [Ctrl + C]
+			}
+			// [Ctrl + F]
 			else if (e.KeyCode == Keys.F && e.Modifiers == Keys.Control)
 			{
 				if (this.dgvFD.DataSource == null)
@@ -157,7 +158,9 @@ namespace FDViewer
 				this.txtSearchText.Visible = true;
 				this.lblSearchText.Visible = true;
 				txtSearchText.Focus();
-			} // End Of [Ctrl + F]
+				txtSearchText.SelectAll();
+			}
+			// [ESC]
 			else if (e.KeyCode == Keys.Escape)
 			{
 				this.txtSearchText.Text = string.Empty;
@@ -165,8 +168,9 @@ namespace FDViewer
 				this.txtSearchText.Visible = false;
 				this.lblSearchText.Visible = false;
 				g_lst_matched_pos.Clear();
-			} // End Of [ESC]
-			  // [Ctrl + Shift + D]
+
+			}
+		    // [Ctrl + Shift + D]
 			else if (e.KeyCode == Keys.D && e.Control && e.Shift)
 			{
 				ShowDefs();
@@ -175,6 +179,14 @@ namespace FDViewer
 			else if (e.KeyCode == Keys.D && e.Control)
 			{
 				ShowDef();
+			}
+			// [Ctrl + Shift + R]
+			else if (e.KeyCode == Keys.R && e.Control && e.Shift)
+			{
+				if (Utils.isEmpty(g_lst_fd))
+					return;
+
+				ShowFormFindTable();
 			}
 		}
 
@@ -358,11 +370,12 @@ namespace FDViewer
 					{
 						g_lst_matched_pos.Clear();
 						MessageBox.Show("Can't find the text: '" + p_search_text + "'");
+						this.txtSearchText.SelectAll();
 					}
 				}
 
 			}       // end of Keys.Enter
-					// [ESC]
+			// [ESC]
 			else if (e.KeyCode == Keys.Escape)
 			{
 				this.txtSearchText.Text = string.Empty;
@@ -395,8 +408,8 @@ namespace FDViewer
 			this.dgvFD.DataSource = x_fd.FDItems;
 			this.dgvFD.Columns[0].Width = 50;
 
-            // Clear matched position
-            this.g_lst_matched_pos.Clear();
+			// Clear matched position
+			this.g_lst_matched_pos.Clear();
 		}
 
 		private void OpenFDFolder()
@@ -487,6 +500,12 @@ namespace FDViewer
 			p_frmHelp.ShowDialog();
 		}
 
+		private void ShowFormFindTable()
+		{
+			frmFindTable p_frm = new frmFindTable(g_lst_fd, this);
+			p_frm.ShowDialog();
+		}
+
 		private void SetFdFileCount(int x_fd_file_count)
 		{
 			lblFdFileCount.Text = string.Format("({0})", x_fd_file_count);
@@ -495,6 +514,19 @@ namespace FDViewer
 		private void SetTableCount(int x_table_count)
 		{
 			lblTableCount.Text = string.Format("({0})", x_table_count);
+		}
+
+		public void ShowFD(FD x_fd)
+		{
+			this.txtTableName.Text = x_fd.TableName;
+			this.dgvFD.DataSource = x_fd.FDItems;
+			this.dgvFD.Columns[0].Width = 50;
+
+			this.cbbFDFiles.Text = string.Empty;
+			this.cbbTableID.Text = string.Empty;
+
+			// Clear matched position
+			this.g_lst_matched_pos.Clear();
 		}
 	} // END OF CLASS
 }
