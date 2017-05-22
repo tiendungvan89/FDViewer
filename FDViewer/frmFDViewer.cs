@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+
 namespace FDViewer
 {
     public partial class frmFDViewer : Form
@@ -402,6 +403,7 @@ namespace FDViewer
 		{
 			using (var fbd = new FolderBrowserDialog())
 			{
+				fbd.ShowNewFolderButton = false;
 				DialogResult result = fbd.ShowDialog();
 
 				if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
@@ -420,6 +422,7 @@ namespace FDViewer
 		{
 			OpenFileDialog p_openDlg = new OpenFileDialog();
 			p_openDlg.Filter = Constants.FD_FILE_FILTER;
+
 			DialogResult p_dlgRs = p_openDlg.ShowDialog();
 
 			if (p_dlgRs == DialogResult.OK)
