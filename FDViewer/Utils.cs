@@ -61,5 +61,17 @@ namespace FDViewer
 			}
 			return p_fd_files;
 		}
+		
+		        public static bool isEmpty<T>(List<T> x_lst)
+        {
+            if (x_lst == null || x_lst.Count == 0)
+                return true;
+            return false;
+        }
+
+        public static bool isEmpty(string x_str)
+        {
+            return string.IsNullOrWhiteSpace(x_str);
+        }
 	}
 }
