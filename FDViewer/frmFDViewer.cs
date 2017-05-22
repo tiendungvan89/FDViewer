@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -179,6 +179,43 @@ namespace FDViewer
 				frmDef p_frmSearch = new frmDef(p_lst_fd, this);
 				p_frmSearch.ShowDialog();
 			}
+            // [Ctrl + Shift + R]
+            else if (e.KeyCode == Keys.R && e.Control && e.Shift)
+            {
+
+                //public static bool isEmpty<T>(List<T> x_lst)
+                //{
+                //    if (x_lst == null || x_lst.Count == 0)
+                //        return true;
+                //    return false;
+                //}
+
+                //public static bool isEmpty(string x_str)
+                //{
+                //    return string.IsNullOrWhiteSpace(x_str);
+                //}
+
+                string p_table_nm = "在庫マスタ";
+                if (Utils.isEmpty(g_lst_fd))
+                    return;
+
+                FD p_fd = g_lst_fd.Where(
+                    x => string.Equals(x.TableID, p_table_nm) || string.Equals(x.TableName, p_table_nm)).FirstOrDefault<FD>();
+
+                if (cbbTableID.DataSource != null)
+                {
+
+                }
+
+                if (cbbFDFiles.DataSource != null)
+                {
+
+                }
+
+                
+            }
+			
+			
 		}
 
 		private void dgvFD_Resize(object sender, EventArgs e)
