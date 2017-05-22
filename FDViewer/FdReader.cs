@@ -24,6 +24,25 @@ namespace FDViewer
 		public const int FD_REMARK_COL_IDX = 5;
 		public const string FD_FILE_ENDCODING = "shift-jis";
 
+		public List<FD> readFD(FDFile x_fdFile)
+		{
+			List<FD> p_fds = new List<FD>();
+			if (x_fdFile == null)
+				return p_fds;
+
+			try
+			{
+				FileInfo p_fileInfo = new FileInfo(x_fdFile.FilePath);
+				p_fds = readFD(p_fileInfo);
+			}
+			catch (Exception ex)
+			{
+				// TODO: write log
+				Console.WriteLine(ex.Message);
+			}
+			return p_fds;
+		}
+
 		public List<FD> readFD(FileInfo x_fInfo)
 		{
 			List<FD> p_fds = new List<FD>();

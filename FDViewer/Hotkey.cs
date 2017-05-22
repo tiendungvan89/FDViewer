@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FDViewer
 {
-	public class Constants
+	public class Hotkey
 	{
-		public const string FD_FILE_FILTER = "FD files (*.fd)|*.fd|All files (*.*)|*.*";
-		public const string FD_FILE_EXT = "*.fd";
+		public string Key { get; set; }
+		public string Value { get; set; }
 	}
 }

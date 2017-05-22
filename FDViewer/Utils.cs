@@ -33,7 +33,7 @@ namespace FDViewer
 		public static string Trim(string x_str)
 		{
 			if (x_str == null)
-				return "";
+				return string.Empty;
 			return x_str.Trim();
 		}
 
@@ -45,7 +45,10 @@ namespace FDViewer
 				if (!Directory.Exists(x_folder))
 					return p_fd_files;
 
-				List<string> files = Directory.EnumerateFiles(x_folder, "*.fd", SearchOption.AllDirectories).ToList<string>();
+				List<string> files = Directory.EnumerateFiles(
+					x_folder,
+					Constants.FD_FILE_EXT,
+					SearchOption.AllDirectories).ToList<string>();
 
 				foreach (string f in files)
 				{
@@ -57,12 +60,13 @@ namespace FDViewer
 			}
 			catch (Exception ex)
 			{
+				// TODO: write log
 				Console.WriteLine(ex.Message);
 			}
 			return p_fd_files;
 		}
 		
-		        public static bool isEmpty<T>(List<T> x_lst)
+		public static bool isEmpty<T>(List<T> x_lst)
         {
             if (x_lst == null || x_lst.Count == 0)
                 return true;
@@ -73,5 +77,6 @@ namespace FDViewer
         {
             return string.IsNullOrWhiteSpace(x_str);
         }
+
 	}
 }

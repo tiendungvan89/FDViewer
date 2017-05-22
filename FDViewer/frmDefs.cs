@@ -90,6 +90,9 @@ namespace FDViewer
 		{
 			if (dgvLogicalNm.DataSource == null)
 				return;
+			if (g_fds == null | g_fds.Count <= 0)
+				return;
+
 			List<TC> p_lst_logical = (List<TC>)dgvLogicalNm.DataSource;
 			List<TC> p_lst_physical = new List<TC>();
 			FdReader p_fdReader = new FdReader();

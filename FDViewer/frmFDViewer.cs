@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +16,7 @@ namespace FDViewer
 
 		#region variable declaration 
 		private List<Point> g_lst_matched_pos = new List<Point>();
+		private List<FD> g_lst_fd = null;
 		#endregion
 
 		#region constructure
@@ -23,33 +24,43 @@ namespace FDViewer
 		{
 			InitializeComponent();
 			dgvFD.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+
+			SetFdFileCount(0);
+			SetTableCount(0);
+		}
+		#endregion
+
+		#region Form' Event
+
+		private void frmFDViewer_KeyDown(object sender, KeyEventArgs e)
+		{
+			// [Ctrl + Shift + O]
+			if (e.KeyCode == Keys.O && e.Control && e.Shift)
+			{
+				OpenFDFolder();
+			}
+			// [Ctrl + O]
+			else if (e.KeyCode == Keys.O && e.Control)
+			{
+				OpenFDFile();
+			}
+			// [F1]
+			else if (e.KeyCode == Keys.F1)
+			{
+				ShowHelp();
+			}
 		}
 		#endregion
 
 		#region Menu's Event
 		private void openToolStripMItem_OpenFile_Click(object sender, EventArgs e)
 		{
-			OpenFileDialog p_openDlg = new OpenFileDialog();
-			p_openDlg.Filter = "FD files (*.fd)|*.fd|All files (*.*)|*.*";
-			DialogResult p_dlgRs = p_openDlg.ShowDialog();
+			OpenFDFile();
+		}
 
-			if (p_dlgRs == System.Windows.Forms.DialogResult.OK)
-			{
-				FileInfo p_fileInfo = new FileInfo(p_openDlg.FileName);
-
-				FdReader p_fdReader = new FdReader();
-				List<FD> p_fds = p_fdReader.readFD(p_fileInfo);
-
-				// TODO: Common below code
-				if (p_fds == null || p_fds.Count <= 0)
-				{
-					MessageBox.Show("FD definition is invalid!");
-					return;
-				}
-
-				cbbTableID.DataSource = p_fds;
-				cbbTableID.DisplayMember = "TableID";
-			}
+		private void openToolStripMItem_OpenFolder_Click(object sender, EventArgs e)
+		{
+			OpenFDFolder();
 		}
 
 		private void openToolStripMItem_Exit_Click(object sender, EventArgs e)
@@ -57,20 +68,10 @@ namespace FDViewer
 			this.Close();
 		}
 
-		private void openToolStripMItem_OpenFolder_Click(object sender, EventArgs e)
+		private void aboutToolStripMItem_help_Click(object sender, EventArgs e)
 		{
-			using (var fbd = new FolderBrowserDialog())
-			{
-				DialogResult result = fbd.ShowDialog();
-
-				if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-				{
-					List<FDFile> p_files = Utils.getFileBelongToFolder(fbd.SelectedPath);
-					cbbFDFiles.DataSource = p_files;
-					cbbFDFiles.DisplayMember = "FileName";
-				}
-			}
-
+			frmHelp p_frmHelp = new frmHelp(this);
+			p_frmHelp.ShowDialog();
 		}
 		#endregion
 
@@ -81,7 +82,7 @@ namespace FDViewer
 			if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
 			{
 				string strFd = Clipboard.GetText();
-				if (strFd != null || strFd != "")
+				if (!string.IsNullOrWhiteSpace(strFd))
 				{
 					FdReader p_fdReader = new FdReader();
 					List<FD> p_fds = p_fdReader.readFD(strFd);
@@ -95,6 +96,9 @@ namespace FDViewer
 
 					cbbTableID.DataSource = p_fds;
 					cbbTableID.DisplayMember = "TableID";
+					g_lst_fd = p_fds;
+
+					SetTableCount(p_fds.Count);
 				}
 			}
 			// Ctrl + C
@@ -164,58 +168,13 @@ namespace FDViewer
 			  // [Ctrl + Shift + D]
 			else if (e.KeyCode == Keys.D && e.Control && e.Shift)
 			{
-				if (cbbTableID.DataSource == null)
-					return;
-				List<FD> p_lst_fd = (List<FD>)cbbTableID.DataSource;
-				frmDefs p_frmDefs = new frmDefs(p_lst_fd, this);
-				p_frmDefs.ShowDialog();
+				ShowDefs();
 			}
 			// [Ctrl + D]
 			else if (e.KeyCode == Keys.D && e.Control)
 			{
-				if (cbbTableID.DataSource == null)
-					return;
-				List<FD> p_lst_fd = (List<FD>)cbbTableID.DataSource;
-				frmDef p_frmSearch = new frmDef(p_lst_fd, this);
-				p_frmSearch.ShowDialog();
+				ShowDef();
 			}
-            // [Ctrl + Shift + R]
-            else if (e.KeyCode == Keys.R && e.Control && e.Shift)
-            {
-
-                //public static bool isEmpty<T>(List<T> x_lst)
-                //{
-                //    if (x_lst == null || x_lst.Count == 0)
-                //        return true;
-                //    return false;
-                //}
-
-                //public static bool isEmpty(string x_str)
-                //{
-                //    return string.IsNullOrWhiteSpace(x_str);
-                //}
-
-                string p_table_nm = "在庫マスタ";
-                if (Utils.isEmpty(g_lst_fd))
-                    return;
-
-                FD p_fd = g_lst_fd.Where(
-                    x => string.Equals(x.TableID, p_table_nm) || string.Equals(x.TableName, p_table_nm)).FirstOrDefault<FD>();
-
-                if (cbbTableID.DataSource != null)
-                {
-
-                }
-
-                if (cbbFDFiles.DataSource != null)
-                {
-
-                }
-
-                
-            }
-			
-			
 		}
 
 		private void dgvFD_Resize(object sender, EventArgs e)
@@ -294,6 +253,7 @@ namespace FDViewer
 			cbbTableID.DataSource = p_fds;
 			cbbTableID.DisplayMember = "TableID";
 
+			SetTableCount(p_fds.Count);
 		}
 
 		private void cbbFDFiles_KeyDown(object sender, KeyEventArgs e)
@@ -336,20 +296,12 @@ namespace FDViewer
 		#region Toolstrip's Event
 		private void tsBtnGetDef_Click(object sender, EventArgs e)
 		{
-			if (cbbTableID.DataSource == null)
-				return;
-			List<FD> p_lst_fd = (List<FD>)cbbTableID.DataSource;
-			frmDef p_frmSearch = new frmDef(p_lst_fd, this);
-			p_frmSearch.ShowDialog();
+			ShowDef();
 		}
 
 		private void tsBtnGetDefs_Click(object sender, EventArgs e)
 		{
-			if (cbbTableID.DataSource == null)
-				return;
-			List<FD> p_lst_fd = (List<FD>)cbbTableID.DataSource;
-			frmDefs p_frmDefs = new frmDefs(p_lst_fd, this);
-			p_frmDefs.ShowDialog();
+			ShowDefs();
 		}
 		#endregion
 
@@ -446,5 +398,100 @@ namespace FDViewer
             this.g_lst_matched_pos.Clear();
 		}
 
+		private void OpenFDFolder()
+		{
+			using (var fbd = new FolderBrowserDialog())
+			{
+				DialogResult result = fbd.ShowDialog();
+
+				if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+				{
+					List<FDFile> p_files = Utils.getFileBelongToFolder(fbd.SelectedPath);
+					cbbFDFiles.DataSource = p_files;
+					cbbFDFiles.DisplayMember = "FileName";
+
+					SetFdFileCount(p_files.Count);
+					g_lst_fd = GetFdFromFiles(p_files);
+				}
+			}
+		}
+
+		private void OpenFDFile()
+		{
+			OpenFileDialog p_openDlg = new OpenFileDialog();
+			p_openDlg.Filter = Constants.FD_FILE_FILTER;
+			DialogResult p_dlgRs = p_openDlg.ShowDialog();
+
+			if (p_dlgRs == DialogResult.OK)
+			{
+				FileInfo p_fileInfo = new FileInfo(p_openDlg.FileName);
+
+				FdReader p_fdReader = new FdReader();
+				List<FD> p_fds = p_fdReader.readFD(p_fileInfo);
+
+				// TODO: Common below code
+				if (p_fds == null || p_fds.Count <= 0)
+				{
+					MessageBox.Show("FD definition is invalid!");
+					return;
+				}
+
+				cbbTableID.DataSource = p_fds;
+				cbbTableID.DisplayMember = "TableID";
+				g_lst_fd = p_fds;
+
+				SetTableCount(p_fds.Count);
+			}
+		}
+
+		private List<FD> GetFdFromFiles(List<FDFile> x_lst_fd_files)
+		{
+			List<FD> p_lst_fd = new List<FD>();
+			FdReader p_fdReader = new FdReader();
+			if (x_lst_fd_files == null || x_lst_fd_files.Count <= 0)
+				return p_lst_fd;
+
+			pbFDLoading.Value = 0;
+			pbFDLoading.Visible = true;
+			pbFDLoading.Maximum = x_lst_fd_files.Count;
+
+			foreach (FDFile p_fd_file in x_lst_fd_files)
+			{
+				List<FD> p_lst_fd_i = p_fdReader.readFD(p_fd_file);
+				p_lst_fd.AddRange(p_lst_fd_i);
+				pbFDLoading.Value += 1;
+			}
+
+			pbFDLoading.Visible = false;
+			return p_lst_fd.Count <= 0 ? null : p_lst_fd;
+		}
+
+		private void ShowDefs()
+		{
+			frmDefs p_frmDefs = new frmDefs(g_lst_fd, this);
+			p_frmDefs.ShowDialog();
+		}
+
+		private void ShowDef()
+		{
+			frmDef p_frmDef = new frmDef(g_lst_fd, this);
+			p_frmDef.ShowDialog();
+		}
+
+		private void ShowHelp()
+		{
+			frmHelp p_frmHelp = new frmHelp(this);
+			p_frmHelp.ShowDialog();
+		}
+
+		private void SetFdFileCount(int x_fd_file_count)
+		{
+			lblFdFileCount.Text = string.Format("({0})", x_fd_file_count);
+		}
+
+		private void SetTableCount(int x_table_count)
+		{
+			lblTableCount.Text = string.Format("({0})", x_table_count);
+		}
 	} // END OF CLASS
 }
