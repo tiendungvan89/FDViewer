@@ -82,10 +82,12 @@
 			this.Controls.Add(this.lbResult);
 			this.Controls.Add(this.lblSearchText);
 			this.Controls.Add(this.txtSearchText);
+			this.KeyPreview = true;
 			this.MinimizeBox = false;
 			this.Name = "frmFindTable";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Find Table";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFindTable_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
