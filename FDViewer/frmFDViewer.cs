@@ -196,6 +196,7 @@ namespace FDViewer
 			if (this.dgvFD.DataSource != null)
 			{
 				this.dgvFD.Columns[0].Width = 50;
+				this.dgvFD.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 			}
 		}
 

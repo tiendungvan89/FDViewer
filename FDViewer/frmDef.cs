@@ -64,8 +64,31 @@ namespace FDViewer
 
 				p_find_text_array = p_find_text.Split(p_ary_field_separators);
 				if (p_find_text_array.Length <= 1)
-					return;
+				{
+					string p_findStr = p_find_text_array[0];
+					// When findstr is table
+					p_fd = g_lst_fd.Where(x => string.Equals(x.TableName, p_findStr)).FirstOrDefault<FD>();
+					if (p_fd != null)
+					{
+						this.txtDefinitionDst.Text = p_fd.TableID;
+						return;
+					}
 
+					// When findstr is field
+					p_fd = g_lst_fd.Where(
+						x => x.FDItems.Where(y => string.Equals(y.Title, p_findStr)) != null
+					).FirstOrDefault<FD>();
+
+					if (p_fd != null)
+					{
+						p_fd_item = p_fd.FDItems.Where(x => string.Equals(x.Title, p_findStr)).FirstOrDefault<FDItems>();
+						this.txtDefinitionDst.Text = p_fd_item.FieldName;
+					}
+
+					return;
+				}
+
+				// when find str have form [table].[field]
 				p_table_nm = p_find_text_array[0].Trim();
 				p_field_nm = p_find_text_array[1].Trim();
 

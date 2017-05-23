@@ -56,6 +56,10 @@ namespace FDViewer
 			{
 				lbResult.Focus();
 			}
+			else if (e.KeyCode == Keys.Enter)
+			{
+				OpenFD();
+			}
 		}
 
 		private void lbResult_Click(object sender, EventArgs e)

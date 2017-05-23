@@ -57,8 +57,8 @@
 			this.pbFDLoading = new System.Windows.Forms.ProgressBar();
 			this.lblFdFileCount = new System.Windows.Forms.Label();
 			this.lblTableCount = new System.Windows.Forms.Label();
-			this.dgvFD = new FDViewer.ExDataGridView();
 			this.fbdFDFolder = new System.Windows.Forms.FolderBrowserDialog();
+			this.dgvFD = new FDViewer.ExDataGridView();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvFD)).BeginInit();
