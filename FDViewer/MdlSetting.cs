@@ -34,10 +34,9 @@ namespace FDViewer
 		/// <summary>
 		/// 設定キー(key)からデータを取得する
 		/// </summary>
-		/// <param name="fileName">ファイル名</param>
 		/// <param name="key">設定キー</param>
 		/// <returns>設定値</returns>
-		public string GetSettingData(string fileName, string key)
+		public string GetSettingData(string key)
 		{
 			var setting = GetSetting(key);
 			if (setting == null)
@@ -50,11 +49,10 @@ namespace FDViewer
 		/// <summary>
 		/// 設定キー(key)のデータを書き換える。
 		/// </summary>
-		/// <param name="fileName">ファイル名</param>
 		/// <param name="key">キー</param>
 		/// <param name="value">設定値</param>
 		/// <returns></returns>
-		public bool SetSettingData(string fileName, string key, string value)
+		public bool SetSettingData(string key, string value)
 		{
 			try
 			{

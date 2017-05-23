@@ -30,7 +30,10 @@
 		{
 			this.lblFdFolder = new System.Windows.Forms.Label();
 			this.txtFdFolder = new System.Windows.Forms.TextBox();
-			this.btnBrowse = new System.Windows.Forms.Button();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.txtSeparator = new System.Windows.Forms.TextBox();
+			this.lblFdFolder_err = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lblFdFolder
@@ -38,7 +41,7 @@
 			this.lblFdFolder.AutoSize = true;
 			this.lblFdFolder.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.lblFdFolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-			this.lblFdFolder.Location = new System.Drawing.Point(12, 20);
+			this.lblFdFolder.Location = new System.Drawing.Point(12, 14);
 			this.lblFdFolder.Name = "lblFdFolder";
 			this.lblFdFolder.Size = new System.Drawing.Size(61, 13);
 			this.lblFdFolder.TabIndex = 11;
@@ -48,34 +51,71 @@
 			// 
 			this.txtFdFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtFdFolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-			this.txtFdFolder.Location = new System.Drawing.Point(91, 15);
+			this.txtFdFolder.Location = new System.Drawing.Point(15, 30);
 			this.txtFdFolder.Name = "txtFdFolder";
-			this.txtFdFolder.Size = new System.Drawing.Size(324, 22);
+			this.txtFdFolder.Size = new System.Drawing.Size(468, 22);
 			this.txtFdFolder.TabIndex = 12;
-			this.txtFdFolder.Visible = false;
 			// 
-			// btnBrowse
+			// btnSave
 			// 
-			this.btnBrowse.Location = new System.Drawing.Point(420, 14);
-			this.btnBrowse.Name = "btnBrowse";
-			this.btnBrowse.Size = new System.Drawing.Size(32, 23);
-			this.btnBrowse.TabIndex = 13;
-			this.btnBrowse.Text = "...";
-			this.btnBrowse.UseVisualStyleBackColor = true;
+			this.btnSave.Location = new System.Drawing.Point(408, 117);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(75, 23);
+			this.btnSave.TabIndex = 13;
+			this.btnSave.Text = "Save";
+			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+			this.label1.Location = new System.Drawing.Point(12, 63);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(158, 13);
+			this.label1.TabIndex = 11;
+			this.label1.Text = "Separator of table and field";
+			// 
+			// txtSeparator
+			// 
+			this.txtSeparator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtSeparator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+			this.txtSeparator.Location = new System.Drawing.Point(15, 79);
+			this.txtSeparator.Name = "txtSeparator";
+			this.txtSeparator.Size = new System.Drawing.Size(468, 22);
+			this.txtSeparator.TabIndex = 12;
+			// 
+			// lblFdFolder_err
+			// 
+			this.lblFdFolder_err.AutoSize = true;
+			this.lblFdFolder_err.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.lblFdFolder_err.ForeColor = System.Drawing.Color.Red;
+			this.lblFdFolder_err.Location = new System.Drawing.Point(79, 14);
+			this.lblFdFolder_err.Name = "lblFdFolder_err";
+			this.lblFdFolder_err.Size = new System.Drawing.Size(36, 13);
+			this.lblFdFolder_err.TabIndex = 11;
+			this.lblFdFolder_err.Text = "error";
+			this.lblFdFolder_err.Visible = false;
 			// 
 			// frmSetting
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(495, 199);
-			this.Controls.Add(this.btnBrowse);
+			this.ClientSize = new System.Drawing.Size(495, 161);
+			this.Controls.Add(this.btnSave);
+			this.Controls.Add(this.txtSeparator);
 			this.Controls.Add(this.txtFdFolder);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lblFdFolder_err);
 			this.Controls.Add(this.lblFdFolder);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmSetting";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Setting";
+			this.Load += new System.EventHandler(this.frmSetting_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -85,6 +125,9 @@
 
 		private System.Windows.Forms.Label lblFdFolder;
 		private System.Windows.Forms.TextBox txtFdFolder;
-		private System.Windows.Forms.Button btnBrowse;
+		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox txtSeparator;
+		private System.Windows.Forms.Label lblFdFolder_err;
 	}
 }

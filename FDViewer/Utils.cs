@@ -78,5 +78,16 @@ namespace FDViewer
             return string.IsNullOrWhiteSpace(x_str);
         }
 
+		public static bool isExistFolder(string x_path)
+		{
+			try
+			{
+				return Directory.Exists(x_path);
+			}
+			catch
+			{
+				return false;
+			}
+		}
 	}
 }
