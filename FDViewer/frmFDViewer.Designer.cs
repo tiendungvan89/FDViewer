@@ -283,7 +283,7 @@
 			this.lblFdFile.AutoSize = true;
 			this.lblFdFile.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.lblFdFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-			this.lblFdFile.Location = new System.Drawing.Point(9, 67);
+			this.lblFdFile.Location = new System.Drawing.Point(11, 67);
 			this.lblFdFile.Name = "lblFdFile";
 			this.lblFdFile.Size = new System.Drawing.Size(52, 13);
 			this.lblFdFile.TabIndex = 10;
@@ -305,7 +305,7 @@
 			this.lblFdFileCount.AutoSize = true;
 			this.lblFdFileCount.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.lblFdFileCount.ForeColor = System.Drawing.Color.Red;
-			this.lblFdFileCount.Location = new System.Drawing.Point(60, 67);
+			this.lblFdFileCount.Location = new System.Drawing.Point(62, 67);
 			this.lblFdFileCount.Name = "lblFdFileCount";
 			this.lblFdFileCount.Size = new System.Drawing.Size(29, 13);
 			this.lblFdFileCount.TabIndex = 10;
