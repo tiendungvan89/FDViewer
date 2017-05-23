@@ -518,7 +518,7 @@ namespace FDViewer
 
 		public void ShowFD(FD x_fd)
 		{
-			this.txtTableName.Text = x_fd.TableName;
+			this.txtTableName.Text = string.Format("{0}({1})", x_fd.TableName, x_fd.TableID);
 			this.dgvFD.DataSource = x_fd.FDItems;
 			this.dgvFD.Columns[0].Width = 50;
 
