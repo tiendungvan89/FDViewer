@@ -44,6 +44,7 @@ namespace FDViewer
 			}
 			this.txtFdFolder.Text = p_folderPath;
 
+			// Load TB_FIELD_SEPARATOR
 			string p_separator = g_mdlSetting.GetSettingData(TB_FIELD_SEPARATOR);
 			if (Utils.isEmpty(p_separator))
 			{
