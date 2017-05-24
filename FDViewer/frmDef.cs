@@ -71,6 +71,7 @@ namespace FDViewer
 					if (p_fd != null)
 					{
 						this.txtDefinitionDst.Text = p_fd.TableID;
+						Clipboard.SetText(p_fd.TableID);
 						return;
 					}
 
@@ -79,10 +80,20 @@ namespace FDViewer
 						x => x.FDItems.Where(y => string.Equals(y.Title, p_findStr)) != null
 					).FirstOrDefault<FD>();
 
-					if (p_fd != null)
+					FDItems p_fd_item_i = null;
+					foreach (FD p_fd_i in g_lst_fd)
 					{
-						p_fd_item = p_fd.FDItems.Where(x => string.Equals(x.Title, p_findStr)).FirstOrDefault<FDItems>();
-						this.txtDefinitionDst.Text = p_fd_item.FieldName;
+						p_fd_item_i = p_fd_i.FDItems.Where(
+							x => string.Equals(x.Title, p_findStr)).FirstOrDefault<FDItems>();
+						if (p_fd_item_i != null)
+							break;
+					}
+
+					if (p_fd_item_i != null)
+					{
+						this.txtDefinitionDst.Text = p_fd_item_i.FieldName;
+						Clipboard.SetText(p_fd_item_i.FieldName);
+						return;
 					}
 
 					return;
