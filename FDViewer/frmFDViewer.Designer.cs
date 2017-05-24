@@ -89,21 +89,21 @@
 			// openToolStripMItem_OpenFile
 			// 
 			this.openToolStripMItem_OpenFile.Name = "openToolStripMItem_OpenFile";
-			this.openToolStripMItem_OpenFile.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMItem_OpenFile.Size = new System.Drawing.Size(137, 22);
 			this.openToolStripMItem_OpenFile.Text = "Open file";
 			this.openToolStripMItem_OpenFile.Click += new System.EventHandler(this.openToolStripMItem_OpenFile_Click);
 			// 
 			// openToolStripMItem_OpenFolder
 			// 
 			this.openToolStripMItem_OpenFolder.Name = "openToolStripMItem_OpenFolder";
-			this.openToolStripMItem_OpenFolder.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMItem_OpenFolder.Size = new System.Drawing.Size(137, 22);
 			this.openToolStripMItem_OpenFolder.Text = "Open folder";
 			this.openToolStripMItem_OpenFolder.Click += new System.EventHandler(this.openToolStripMItem_OpenFolder_Click);
 			// 
 			// openToolStripMItem_Exit
 			// 
 			this.openToolStripMItem_Exit.Name = "openToolStripMItem_Exit";
-			this.openToolStripMItem_Exit.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMItem_Exit.Size = new System.Drawing.Size(137, 22);
 			this.openToolStripMItem_Exit.Text = "Exit";
 			this.openToolStripMItem_Exit.Click += new System.EventHandler(this.openToolStripMItem_Exit_Click);
 			// 
@@ -119,14 +119,14 @@
 			// configurationToolStripMenuItem
 			// 
 			this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.configurationToolStripMenuItem.Text = "Configuration";
 			this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
 			// 
 			// compareToolStripMenuItem
 			// 
 			this.compareToolStripMenuItem.Name = "compareToolStripMenuItem";
-			this.compareToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.compareToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.compareToolStripMenuItem.Text = "Compare";
 			// 
 			// aboutToolStripMenuItem
@@ -140,7 +140,7 @@
 			// aboutToolStripMItem_help
 			// 
 			this.aboutToolStripMItem_help.Name = "aboutToolStripMItem_help";
-			this.aboutToolStripMItem_help.Size = new System.Drawing.Size(152, 22);
+			this.aboutToolStripMItem_help.Size = new System.Drawing.Size(99, 22);
 			this.aboutToolStripMItem_help.Text = "Help";
 			this.aboutToolStripMItem_help.Click += new System.EventHandler(this.aboutToolStripMItem_help_Click);
 			// 
@@ -393,6 +393,7 @@
 			this.KeyPreview = true;
 			this.Name = "frmFDViewer";
 			this.Text = "FDViewer";
+			this.Load += new System.EventHandler(this.frmFDViewer_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFDViewer_KeyDown);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();

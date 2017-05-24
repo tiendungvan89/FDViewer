@@ -56,7 +56,8 @@ namespace FDViewer
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			string p_folderPath = this.txtFdFolder.Text.Trim();
-			if (Utils.isExistFolder(p_folderPath))
+
+			if (Utils.isEmpty(p_folderPath) || Utils.isExistFolder(p_folderPath))
 			{
 				g_mdlSetting.SetSettingData(FD_FOLDER_PATH, p_folderPath);
 
@@ -68,6 +69,7 @@ namespace FDViewer
 				this.lblFdFolder_err.Visible = true;
 				this.lblFdFolder_err.Text = "Folder is not existed!";
 			}
+			
 
 			string p_separator = this.txtSeparator.Text.Trim();
 			if (!Utils.isEmpty(p_separator))
@@ -76,7 +78,7 @@ namespace FDViewer
 			}
 		}
 
-		public static string GetFdFolderName()
+		public static string GetFdFolder()
 		{
 			MdlSetting p_mdlSetting = new MdlSetting(SETTING_FILE_NAME);
 			string p_folderPath = p_mdlSetting.GetSettingData(FD_FOLDER_PATH);
@@ -85,6 +87,15 @@ namespace FDViewer
 				p_folderPath = string.Empty;
 			}
 			return p_folderPath;
+		}
+
+		public static void SetFdFolder(string x_folder)
+		{
+			MdlSetting p_mdlSetting = new MdlSetting(SETTING_FILE_NAME);
+			if (Utils.isExistFolder(x_folder))
+			{
+				p_mdlSetting.SetSettingData(FD_FOLDER_PATH, x_folder);
+			}
 		}
 	}
 }

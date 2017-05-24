@@ -28,12 +28,6 @@ namespace FDViewer
 
 			SetFdFileCount(0);
 			SetTableCount(0);
-
-			string p_fd_folder = frmSetting.GetFdFolderName();
-			if (!Utils.isEmpty(p_fd_folder))
-			{
-				this.fbdFDFolder.SelectedPath = p_fd_folder;
-			}
 		}
 		#endregion
 
@@ -57,6 +51,22 @@ namespace FDViewer
 				ShowHelp();
 			}
 		}
+
+		private void frmFDViewer_Load(object sender, EventArgs e)
+		{
+			string p_fd_folder = frmSetting.GetFdFolder();
+			if (!Utils.isEmpty(p_fd_folder))
+			{
+				this.fbdFDFolder.SelectedPath = p_fd_folder;
+
+				List<FDFile> p_files = Utils.getFileBelongToFolder(fbdFDFolder.SelectedPath);
+				cbbFDFiles.DataSource = p_files;
+				cbbFDFiles.DisplayMember = "FileName";
+
+				SetFdFileCount(p_files.Count);
+				g_lst_fd = GetFdFromFiles(p_files);
+			}			
+		}
 		#endregion
 
 		#region Menu's Event
@@ -79,6 +89,11 @@ namespace FDViewer
 		{
 			frmHelp p_frmHelp = new frmHelp(this);
 			p_frmHelp.ShowDialog();
+		}
+
+		private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ShowSettingForm();
 		}
 		#endregion
 
@@ -421,21 +436,19 @@ namespace FDViewer
 
 		private void OpenFDFolder()
 		{
-			//using (var fbd = new FolderBrowserDialog())
-			//{
-				fbdFDFolder.ShowNewFolderButton = false;
-				DialogResult result = fbdFDFolder.ShowDialog();
+			fbdFDFolder.ShowNewFolderButton = false;
+			DialogResult result = fbdFDFolder.ShowDialog();
 
-				if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbdFDFolder.SelectedPath))
-				{
-					List<FDFile> p_files = Utils.getFileBelongToFolder(fbdFDFolder.SelectedPath);
-					cbbFDFiles.DataSource = p_files;
-					cbbFDFiles.DisplayMember = "FileName";
+			if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbdFDFolder.SelectedPath))
+			{
+				List<FDFile> p_files = Utils.getFileBelongToFolder(fbdFDFolder.SelectedPath);
+				cbbFDFiles.DataSource = p_files;
+				cbbFDFiles.DisplayMember = "FileName";
 
-					SetFdFileCount(p_files.Count);
-					g_lst_fd = GetFdFromFiles(p_files);
-				}
-			//}
+				SetFdFileCount(p_files.Count);
+				g_lst_fd = GetFdFromFiles(p_files);
+				frmSetting.SetFdFolder(fbdFDFolder.SelectedPath);
+			}
 		}
 
 		private void OpenFDFile()
@@ -542,9 +555,5 @@ namespace FDViewer
 			this.g_lst_matched_pos.Clear();
 		}
 
-		private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			ShowSettingForm();
-		}
 	} // END OF CLASS
 }
