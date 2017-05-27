@@ -223,7 +223,6 @@ namespace FDViewer
 
 		private void dgvFD_SelectionChanged(object sender, EventArgs e)
 		{
-			//g_lst_matched_pos.Clear();
 		}
 
 		private void dgvFD_Click(object sender, EventArgs e)
@@ -235,11 +234,11 @@ namespace FDViewer
 		#region Button's event
 		private void btnCopyToClipboard_Click(object sender, EventArgs e)
         {
-			if (cbbTableID.DataSource != null && cbbTableID.SelectedItem != null)
+			if (this.dgvFD.Tag != null)
 			{
-				FD p_fd = (FD)cbbTableID.SelectedItem;
+				FD p_fd = this.dgvFD.Tag as FD;
 				string p_text = p_fd.ToString();
-				if (!string.IsNullOrWhiteSpace(p_text)) 
+				if (!string.IsNullOrWhiteSpace(p_text))
 					Clipboard.SetText(p_fd.ToString());
 			}
 		}
@@ -429,6 +428,7 @@ namespace FDViewer
 			this.txtTableName.Text = x_fd.TableName;
 			this.dgvFD.DataSource = x_fd.FDItems;
 			this.dgvFD.Columns[0].Width = 50;
+			this.dgvFD.Tag = x_fd;
 
 			// Clear matched position
 			this.g_lst_matched_pos.Clear();
@@ -547,6 +547,7 @@ namespace FDViewer
 			this.txtTableName.Text = string.Format("{0}({1})", x_fd.TableName, x_fd.TableID);
 			this.dgvFD.DataSource = x_fd.FDItems;
 			this.dgvFD.Columns[0].Width = 50;
+			this.dgvFD.Tag = x_fd;
 
 			this.cbbFDFiles.Text = string.Empty;
 			this.cbbTableID.Text = string.Empty;

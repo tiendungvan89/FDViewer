@@ -34,6 +34,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtSeparator = new System.Windows.Forms.TextBox();
 			this.lblFdFolder_err = new System.Windows.Forms.Label();
+			this.lblSeparator_err = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// lblFdFolder
@@ -54,14 +55,14 @@
 			this.txtFdFolder.Location = new System.Drawing.Point(15, 30);
 			this.txtFdFolder.Name = "txtFdFolder";
 			this.txtFdFolder.Size = new System.Drawing.Size(468, 22);
-			this.txtFdFolder.TabIndex = 12;
+			this.txtFdFolder.TabIndex = 1;
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(408, 117);
+			this.btnSave.Location = new System.Drawing.Point(408, 127);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 13;
+			this.btnSave.TabIndex = 3;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -84,7 +85,7 @@
 			this.txtSeparator.Location = new System.Drawing.Point(15, 79);
 			this.txtSeparator.Name = "txtSeparator";
 			this.txtSeparator.Size = new System.Drawing.Size(468, 22);
-			this.txtSeparator.TabIndex = 12;
+			this.txtSeparator.TabIndex = 2;
 			// 
 			// lblFdFolder_err
 			// 
@@ -98,15 +99,29 @@
 			this.lblFdFolder_err.Text = "error";
 			this.lblFdFolder_err.Visible = false;
 			// 
+			// lblSeparator_err
+			// 
+			this.lblSeparator_err.AutoSize = true;
+			this.lblSeparator_err.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.lblSeparator_err.ForeColor = System.Drawing.Color.Red;
+			this.lblSeparator_err.Location = new System.Drawing.Point(176, 63);
+			this.lblSeparator_err.Name = "lblSeparator_err";
+			this.lblSeparator_err.Size = new System.Drawing.Size(36, 13);
+			this.lblSeparator_err.TabIndex = 11;
+			this.lblSeparator_err.Text = "error";
+			this.lblSeparator_err.Visible = false;
+			// 
 			// frmSetting
 			// 
+			this.AcceptButton = this.btnSave;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(495, 161);
+			this.ClientSize = new System.Drawing.Size(495, 160);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.txtSeparator);
 			this.Controls.Add(this.txtFdFolder);
 			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lblSeparator_err);
 			this.Controls.Add(this.lblFdFolder_err);
 			this.Controls.Add(this.lblFdFolder);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -129,5 +144,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtSeparator;
 		private System.Windows.Forms.Label lblFdFolder_err;
+		private System.Windows.Forms.Label lblSeparator_err;
 	}
 }

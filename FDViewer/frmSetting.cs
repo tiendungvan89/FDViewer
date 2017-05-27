@@ -56,6 +56,7 @@ namespace FDViewer
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			string p_folderPath = this.txtFdFolder.Text.Trim();
+			int p_err_cnt = 0;
 
 			if (Utils.isEmpty(p_folderPath) || Utils.isExistFolder(p_folderPath))
 			{
@@ -68,6 +69,7 @@ namespace FDViewer
 			{
 				this.lblFdFolder_err.Visible = true;
 				this.lblFdFolder_err.Text = "Folder is not existed!";
+				p_err_cnt++;
 			}
 			
 
@@ -75,7 +77,19 @@ namespace FDViewer
 			if (!Utils.isEmpty(p_separator))
 			{
 				g_mdlSetting.SetSettingData(TB_FIELD_SEPARATOR, p_separator);
+
+				this.lblSeparator_err.Visible = false;
+				this.lblSeparator_err.Text = string.Empty;
 			}
+			else
+			{
+				this.lblSeparator_err.Visible = true;
+				this.lblSeparator_err.Text = "Separator is empty!";
+				p_err_cnt++;
+			}
+
+			if (p_err_cnt == 0)
+				this.Close();
 		}
 
 		public static string GetFdFolder()
