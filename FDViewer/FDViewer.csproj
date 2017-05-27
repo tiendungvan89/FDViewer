@@ -120,40 +120,40 @@
     <Compile Include="FDFile.cs" />
     <Compile Include="FDItems.cs" />
     <Compile Include="FdReader.cs" />
-    <Compile Include="frmDefs.cs">
+    <Compile Include="View\frmDefs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDefs.Designer.cs">
+    <Compile Include="View\frmDefs.Designer.cs">
       <DependentUpon>frmDefs.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFDViewer.cs">
+    <Compile Include="View\frmFDViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFDViewer.Designer.cs">
+    <Compile Include="View\frmFDViewer.Designer.cs">
       <DependentUpon>frmFDViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDef.cs">
+    <Compile Include="View\frmDef.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDef.Designer.cs">
+    <Compile Include="View\frmDef.Designer.cs">
       <DependentUpon>frmDef.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFindTable.cs">
+    <Compile Include="View\frmFindTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFindTable.Designer.cs">
+    <Compile Include="View\frmFindTable.Designer.cs">
       <DependentUpon>frmFindTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHelp.cs">
+    <Compile Include="View\frmHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHelp.Designer.cs">
+    <Compile Include="View\frmHelp.Designer.cs">
       <DependentUpon>frmHelp.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSetting.cs">
+    <Compile Include="View\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSetting.Designer.cs">
+    <Compile Include="View\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Hotkey.cs" />
@@ -162,22 +162,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TC.cs" />
     <Compile Include="Utils.cs" />
-    <EmbeddedResource Include="frmDefs.resx">
+    <EmbeddedResource Include="View\frmDefs.resx">
       <DependentUpon>frmDefs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFDViewer.resx">
+    <EmbeddedResource Include="View\frmFDViewer.resx">
       <DependentUpon>frmFDViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDef.resx">
+    <EmbeddedResource Include="View\frmDef.resx">
       <DependentUpon>frmDef.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFindTable.resx">
+    <EmbeddedResource Include="View\frmFindTable.resx">
       <DependentUpon>frmFindTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHelp.resx">
+    <EmbeddedResource Include="View\frmHelp.resx">
       <DependentUpon>frmHelp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSetting.resx">
+    <EmbeddedResource Include="View\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
