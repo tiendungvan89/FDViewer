@@ -45,7 +45,7 @@ namespace FDViewer
 			if (p_rs == null)
 				return;
 
-			List<FD> p_lst_rs = p_rs.ToList<FD>();
+			List<FD> p_lst_rs = p_rs.OrderBy(x => x.TableID).ToList<FD>();
 			lbResult.DataSource = p_lst_rs;
 			lbResult.DisplayMember = "TableID";
 		}
