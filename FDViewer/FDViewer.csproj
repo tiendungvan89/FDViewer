@@ -112,14 +112,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="ExDataGridView.cs">
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="View\Control\ExDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FD.cs" />
-    <Compile Include="FDFile.cs" />
-    <Compile Include="FDItems.cs" />
-    <Compile Include="FdReader.cs" />
+    <Compile Include="Model\FD.cs" />
+    <Compile Include="Model\FDFile.cs" />
+    <Compile Include="Model\FDItems.cs" />
+    <Compile Include="DAO\FdReader.cs" />
     <Compile Include="View\frmDefs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,12 +156,12 @@
     <Compile Include="View\frmSetting.Designer.cs">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hotkey.cs" />
-    <Compile Include="MdlSetting.cs" />
+    <Compile Include="Model\Hotkey.cs" />
+    <Compile Include="Common\MdlSetting.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TC.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="Model\TC.cs" />
+    <Compile Include="Common\Utils.cs" />
     <EmbeddedResource Include="View\frmDefs.resx">
       <DependentUpon>frmDefs.cs</DependentUpon>
     </EmbeddedResource>
