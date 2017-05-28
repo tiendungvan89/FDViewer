@@ -99,11 +99,6 @@ namespace FDViewer
 			this.rtbStr.Text = p_builder.ToString();
 		}
 
-		private void rtbStr_KeyDown(object sender, KeyEventArgs e)
-		{
-			
-		}
-
 		private void btnClear_Click(object sender, EventArgs e)
 		{
 			this.txtPrefix.Text = string.Empty;
@@ -114,11 +109,6 @@ namespace FDViewer
 			g_modifing = false;
 			g_origin_str = string.Empty;
 			this.rtbStr.Focus();
-		}
-
-		private void btnRemove_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void txtPrefix_KeyDown(object sender, KeyEventArgs e)

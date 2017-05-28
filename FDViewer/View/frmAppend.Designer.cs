@@ -51,7 +51,6 @@
 			this.rtbStr.Size = new System.Drawing.Size(550, 254);
 			this.rtbStr.TabIndex = 0;
 			this.rtbStr.Text = "";
-			this.rtbStr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtbStr_KeyDown);
 			// 
 			// txtPrefix
 			// 
