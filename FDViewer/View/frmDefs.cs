@@ -103,10 +103,5 @@ namespace FDViewer
 
 			dgvPhysicalNm.DataSource = p_lst_physical;
 		}
-
-		private void frmDefs_Load(object sender, EventArgs e)
-		{
-
-		}
 	}
 }
