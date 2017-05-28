@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAppend));
 			this.rtbStr = new System.Windows.Forms.RichTextBox();
 			this.txtPrefix = new System.Windows.Forms.TextBox();
 			this.txtSuffix = new System.Windows.Forms.TextBox();
@@ -35,7 +36,7 @@
 			this.lblSuffix = new System.Windows.Forms.Label();
 			this.chkTrim = new System.Windows.Forms.CheckBox();
 			this.chkSkipEmptyRow = new System.Windows.Forms.CheckBox();
-			this.btnClear = new System.Windows.Forms.Button();
+			this.btnReset = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// rtbStr
@@ -45,9 +46,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.rtbStr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.rtbStr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-			this.rtbStr.Location = new System.Drawing.Point(12, 56);
+			this.rtbStr.Location = new System.Drawing.Point(12, 78);
 			this.rtbStr.Name = "rtbStr";
-			this.rtbStr.Size = new System.Drawing.Size(649, 348);
+			this.rtbStr.Size = new System.Drawing.Size(550, 254);
 			this.rtbStr.TabIndex = 0;
 			this.rtbStr.Text = "";
 			this.rtbStr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtbStr_KeyDown);
@@ -56,25 +57,27 @@
 			// 
 			this.txtPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtPrefix.ForeColor = System.Drawing.Color.Navy;
-			this.txtPrefix.Location = new System.Drawing.Point(12, 28);
+			this.txtPrefix.Location = new System.Drawing.Point(12, 37);
 			this.txtPrefix.Name = "txtPrefix";
 			this.txtPrefix.Size = new System.Drawing.Size(161, 22);
 			this.txtPrefix.TabIndex = 1;
+			this.txtPrefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrefix_KeyDown);
 			// 
 			// txtSuffix
 			// 
 			this.txtSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtSuffix.ForeColor = System.Drawing.Color.Navy;
-			this.txtSuffix.Location = new System.Drawing.Point(182, 28);
+			this.txtSuffix.Location = new System.Drawing.Point(182, 37);
 			this.txtSuffix.Name = "txtSuffix";
 			this.txtSuffix.Size = new System.Drawing.Size(161, 22);
 			this.txtSuffix.TabIndex = 2;
+			this.txtSuffix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSuffix_KeyDown);
 			// 
 			// lblPrefix
 			// 
 			this.lblPrefix.AutoSize = true;
 			this.lblPrefix.ForeColor = System.Drawing.Color.Navy;
-			this.lblPrefix.Location = new System.Drawing.Point(9, 9);
+			this.lblPrefix.Location = new System.Drawing.Point(9, 15);
 			this.lblPrefix.Name = "lblPrefix";
 			this.lblPrefix.Size = new System.Drawing.Size(33, 13);
 			this.lblPrefix.TabIndex = 2;
@@ -84,7 +87,7 @@
 			// 
 			this.lblSuffix.AutoSize = true;
 			this.lblSuffix.ForeColor = System.Drawing.Color.Navy;
-			this.lblSuffix.Location = new System.Drawing.Point(179, 9);
+			this.lblSuffix.Location = new System.Drawing.Point(179, 15);
 			this.lblSuffix.Name = "lblSuffix";
 			this.lblSuffix.Size = new System.Drawing.Size(33, 13);
 			this.lblSuffix.TabIndex = 2;
@@ -97,7 +100,7 @@
 			this.chkTrim.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.chkTrim.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.chkTrim.ForeColor = System.Drawing.Color.Navy;
-			this.chkTrim.Location = new System.Drawing.Point(361, 30);
+			this.chkTrim.Location = new System.Drawing.Point(361, 12);
 			this.chkTrim.Name = "chkTrim";
 			this.chkTrim.Size = new System.Drawing.Size(54, 20);
 			this.chkTrim.TabIndex = 3;
@@ -111,30 +114,31 @@
 			this.chkSkipEmptyRow.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.chkSkipEmptyRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.chkSkipEmptyRow.ForeColor = System.Drawing.Color.Navy;
-			this.chkSkipEmptyRow.Location = new System.Drawing.Point(421, 30);
+			this.chkSkipEmptyRow.Location = new System.Drawing.Point(361, 39);
 			this.chkSkipEmptyRow.Name = "chkSkipEmptyRow";
 			this.chkSkipEmptyRow.Size = new System.Drawing.Size(118, 20);
 			this.chkSkipEmptyRow.TabIndex = 3;
 			this.chkSkipEmptyRow.Text = "Skip empty row";
 			this.chkSkipEmptyRow.UseVisualStyleBackColor = true;
 			// 
-			// btnClear
+			// btnReset
 			// 
-			this.btnClear.ForeColor = System.Drawing.Color.Navy;
-			this.btnClear.Location = new System.Drawing.Point(545, 27);
-			this.btnClear.Name = "btnClear";
-			this.btnClear.Size = new System.Drawing.Size(75, 23);
-			this.btnClear.TabIndex = 4;
-			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
-			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+			this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnReset.ForeColor = System.Drawing.Color.Navy;
+			this.btnReset.Location = new System.Drawing.Point(485, 12);
+			this.btnReset.Name = "btnReset";
+			this.btnReset.Size = new System.Drawing.Size(75, 48);
+			this.btnReset.TabIndex = 4;
+			this.btnReset.Text = "Reset";
+			this.btnReset.UseVisualStyleBackColor = true;
+			this.btnReset.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// frmAppend
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(674, 416);
-			this.Controls.Add(this.btnClear);
+			this.ClientSize = new System.Drawing.Size(575, 344);
+			this.Controls.Add(this.btnReset);
 			this.Controls.Add(this.chkSkipEmptyRow);
 			this.Controls.Add(this.chkTrim);
 			this.Controls.Add(this.lblSuffix);
@@ -142,7 +146,10 @@
 			this.Controls.Add(this.txtSuffix);
 			this.Controls.Add(this.txtPrefix);
 			this.Controls.Add(this.rtbStr);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MinimizeBox = false;
 			this.Name = "frmAppend";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
 			this.Text = "Append";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -158,6 +165,6 @@
 		private System.Windows.Forms.Label lblSuffix;
 		private System.Windows.Forms.CheckBox chkTrim;
 		private System.Windows.Forms.CheckBox chkSkipEmptyRow;
-		private System.Windows.Forms.Button btnClear;
+		private System.Windows.Forms.Button btnReset;
 	}
 }

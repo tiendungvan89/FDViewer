@@ -498,7 +498,7 @@ namespace FDViewer
 				pbFDLoading.Value += 1;
 			}
 
-			pbFDLoading.Visible = false;
+			//pbFDLoading.Visible = false;
 			return p_lst_fd.Count <= 0 ? null : p_lst_fd;
 		}
 
@@ -534,7 +534,7 @@ namespace FDViewer
 
 		private void ShowFormQuote()
 		{
-			frmAppend p_frm = new frmAppend();
+			frmAppend p_frm = new frmAppend(this);
 			p_frm.ShowDialog();
 		}
 

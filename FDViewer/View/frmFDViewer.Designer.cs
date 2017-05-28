@@ -51,16 +51,16 @@
 			this.lblSearchText = new System.Windows.Forms.Label();
 			this.toolStrip = new System.Windows.Forms.ToolStrip();
 			this.tsBtnGetDef = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsBtnGetDefs = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsBtnQuote = new System.Windows.Forms.ToolStripButton();
 			this.cbbFDFiles = new System.Windows.Forms.ComboBox();
 			this.lblFdFile = new System.Windows.Forms.Label();
 			this.pbFDLoading = new System.Windows.Forms.ProgressBar();
 			this.lblFdFileCount = new System.Windows.Forms.Label();
 			this.lblTableCount = new System.Windows.Forms.Label();
 			this.fbdFDFolder = new System.Windows.Forms.FolderBrowserDialog();
-			this.tsBtnQuote = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.dgvFD = new FDViewer.ExDataGridView();
 			this.menuStrip1.SuspendLayout();
 			this.toolStrip.SuspendLayout();
@@ -92,21 +92,21 @@
 			// openToolStripMItem_OpenFile
 			// 
 			this.openToolStripMItem_OpenFile.Name = "openToolStripMItem_OpenFile";
-			this.openToolStripMItem_OpenFile.Size = new System.Drawing.Size(137, 22);
+			this.openToolStripMItem_OpenFile.Size = new System.Drawing.Size(152, 22);
 			this.openToolStripMItem_OpenFile.Text = "Open file";
 			this.openToolStripMItem_OpenFile.Click += new System.EventHandler(this.openToolStripMItem_OpenFile_Click);
 			// 
 			// openToolStripMItem_OpenFolder
 			// 
 			this.openToolStripMItem_OpenFolder.Name = "openToolStripMItem_OpenFolder";
-			this.openToolStripMItem_OpenFolder.Size = new System.Drawing.Size(137, 22);
+			this.openToolStripMItem_OpenFolder.Size = new System.Drawing.Size(152, 22);
 			this.openToolStripMItem_OpenFolder.Text = "Open folder";
 			this.openToolStripMItem_OpenFolder.Click += new System.EventHandler(this.openToolStripMItem_OpenFolder_Click);
 			// 
 			// openToolStripMItem_Exit
 			// 
 			this.openToolStripMItem_Exit.Name = "openToolStripMItem_Exit";
-			this.openToolStripMItem_Exit.Size = new System.Drawing.Size(137, 22);
+			this.openToolStripMItem_Exit.Size = new System.Drawing.Size(152, 22);
 			this.openToolStripMItem_Exit.Text = "Exit";
 			this.openToolStripMItem_Exit.Click += new System.EventHandler(this.openToolStripMItem_Exit_Click);
 			// 
@@ -122,14 +122,14 @@
 			// configurationToolStripMenuItem
 			// 
 			this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.configurationToolStripMenuItem.Text = "Configuration";
 			this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
 			// 
 			// compareToolStripMenuItem
 			// 
 			this.compareToolStripMenuItem.Name = "compareToolStripMenuItem";
-			this.compareToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.compareToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.compareToolStripMenuItem.Text = "Compare";
 			// 
 			// aboutToolStripMenuItem
@@ -237,7 +237,7 @@
 			// 
 			// toolStrip
 			// 
-			this.toolStrip.ImageScalingSize = new System.Drawing.Size(23, 23);
+			this.toolStrip.ImageScalingSize = new System.Drawing.Size(25, 25);
 			this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsBtnGetDef,
             this.toolStripSeparator2,
@@ -246,7 +246,7 @@
             this.tsBtnQuote});
 			this.toolStrip.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip.Name = "toolStrip";
-			this.toolStrip.Size = new System.Drawing.Size(947, 30);
+			this.toolStrip.Size = new System.Drawing.Size(947, 32);
 			this.toolStrip.TabIndex = 11;
 			this.toolStrip.Text = "toolStrip1";
 			// 
@@ -256,9 +256,14 @@
 			this.tsBtnGetDef.Image = global::FDViewer.Properties.Resources.single_convert;
 			this.tsBtnGetDef.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsBtnGetDef.Name = "tsBtnGetDef";
-			this.tsBtnGetDef.Size = new System.Drawing.Size(27, 27);
+			this.tsBtnGetDef.Size = new System.Drawing.Size(29, 29);
 			this.tsBtnGetDef.Text = "Single Convert";
 			this.tsBtnGetDef.Click += new System.EventHandler(this.tsBtnGetDef_Click);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
 			// 
 			// tsBtnGetDefs
 			// 
@@ -266,9 +271,24 @@
 			this.tsBtnGetDefs.Image = global::FDViewer.Properties.Resources.multi_convert;
 			this.tsBtnGetDefs.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsBtnGetDefs.Name = "tsBtnGetDefs";
-			this.tsBtnGetDefs.Size = new System.Drawing.Size(27, 27);
+			this.tsBtnGetDefs.Size = new System.Drawing.Size(29, 29);
 			this.tsBtnGetDefs.Text = "Multi Convert";
 			this.tsBtnGetDefs.Click += new System.EventHandler(this.tsBtnGetDefs_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+			// 
+			// tsBtnQuote
+			// 
+			this.tsBtnQuote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsBtnQuote.Image = global::FDViewer.Properties.Resources.quote;
+			this.tsBtnQuote.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsBtnQuote.Name = "tsBtnQuote";
+			this.tsBtnQuote.Size = new System.Drawing.Size(29, 29);
+			this.tsBtnQuote.Text = "Quote";
+			this.tsBtnQuote.Click += new System.EventHandler(this.tsBtnQuote_Click);
 			// 
 			// cbbFDFiles
 			// 
@@ -306,7 +326,6 @@
 			this.pbFDLoading.Size = new System.Drawing.Size(945, 1);
 			this.pbFDLoading.TabIndex = 12;
 			this.pbFDLoading.Value = 100;
-			this.pbFDLoading.Visible = false;
 			// 
 			// lblFdFileCount
 			// 
@@ -329,26 +348,6 @@
 			this.lblTableCount.Size = new System.Drawing.Size(36, 13);
 			this.lblTableCount.TabIndex = 10;
 			this.lblTableCount.Text = "(570)";
-			// 
-			// tsBtnQuote
-			// 
-			this.tsBtnQuote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsBtnQuote.Image = global::FDViewer.Properties.Resources.quote;
-			this.tsBtnQuote.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsBtnQuote.Name = "tsBtnQuote";
-			this.tsBtnQuote.Size = new System.Drawing.Size(27, 27);
-			this.tsBtnQuote.Text = "Quote";
-			this.tsBtnQuote.Click += new System.EventHandler(this.tsBtnQuote_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 30);
 			// 
 			// dgvFD
 			// 

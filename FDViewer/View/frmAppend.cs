@@ -15,9 +15,18 @@ namespace FDViewer
 		private string g_origin_str = string.Empty;
 		private bool g_modifing = false;
 
-		public frmAppend()
+		public frmAppend(Form x_parent)
 		{
 			InitializeComponent();
+
+			int p_top = x_parent.Top;
+			int p_left = x_parent.Left;
+			int p_width = x_parent.Width;
+			int p_height = x_parent.Height;
+
+			Point p_location = new Point(p_left + (p_width - this.Width) / 2,
+				p_top + (p_height - this.Height) / 2);
+			this.Location = p_location;
 
 			this.txtPrefix.TextChanged += Txt_TextChanged;
 			this.txtSuffix.TextChanged += Txt_TextChanged;
@@ -104,6 +113,28 @@ namespace FDViewer
 			this.rtbStr.ReadOnly = false;
 			g_modifing = false;
 			g_origin_str = string.Empty;
+			this.rtbStr.Focus();
+		}
+
+		private void btnRemove_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtPrefix_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				this.txtSuffix.Focus();
+			}
+		}
+
+		private void txtSuffix_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				this.txtPrefix.Focus();
+			}
 		}
 	}
 }
