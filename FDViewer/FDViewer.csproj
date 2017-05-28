@@ -201,6 +201,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\res.psd" />
     <None Include="settings.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -210,8 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fd_hjH_9.ico" />
+    <None Include="Resources\quote.png" />
+    <None Include="Resources\single_convert.png" />
+    <None Include="Resources\multi_convert.png" />
     <Content Include="TextFile1.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -556,5 +556,9 @@ namespace FDViewer
 			this.g_lst_matched_pos.Clear();
 		}
 
+		private void tsBtnQuote_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Quote");
+		}
 	} // END OF CLASS
 }

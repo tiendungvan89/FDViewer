@@ -33,13 +33,13 @@ namespace FDViewer
 			this.Location = p_location;
 		}
 
-		//private void FrmDefs_KeyDown(object sender, KeyEventArgs e)
-		//{
-		//	if (e.KeyCode == Keys.Escape)
-		//	{
-		//		this.Close();
-		//	}
-		//}
+		private void FrmDefs_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
 
 		private void DGV_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -102,6 +102,11 @@ namespace FDViewer
 			}
 
 			dgvPhysicalNm.DataSource = p_lst_physical;
+		}
+
+		private void frmDefs_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
