@@ -113,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="View\BaseSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BaseSubForm.Designer.cs">
+      <DependentUpon>BaseSubForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Control\ExDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -150,6 +156,12 @@
     <Compile Include="View\frmHelp.Designer.cs">
       <DependentUpon>frmHelp.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmAppend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAppend.Designer.cs">
+      <DependentUpon>frmAppend.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +174,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\TC.cs" />
     <Compile Include="Common\Utils.cs" />
+    <EmbeddedResource Include="View\BaseSubForm.resx">
+      <DependentUpon>BaseSubForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmDefs.resx">
       <DependentUpon>frmDefs.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmHelp.resx">
       <DependentUpon>frmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmAppend.resx">
+      <DependentUpon>frmAppend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>

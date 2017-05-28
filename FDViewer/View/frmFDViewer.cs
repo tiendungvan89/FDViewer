@@ -532,6 +532,12 @@ namespace FDViewer
 			p_frm.ShowDialog();
 		}
 
+		private void ShowFormQuote()
+		{
+			frmAppend p_frm = new frmAppend();
+			p_frm.ShowDialog();
+		}
+
 		private void SetFdFileCount(int x_fd_file_count)
 		{
 			lblFdFileCount.Text = string.Format("({0})", x_fd_file_count);
@@ -558,7 +564,7 @@ namespace FDViewer
 
 		private void tsBtnQuote_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Quote");
+			ShowFormQuote();
 		}
 	} // END OF CLASS
 }
